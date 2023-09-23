@@ -26,7 +26,7 @@ streamlit.header("Fruityvice Fruit Advice!")
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 
-# write your own comment -what does the next line do? 
+# write your own comment -whaft does the next line do? 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # streamlit.text(fruityvice_normalized)
 # write your own comment - what does this do?
@@ -45,6 +45,7 @@ streamlit.dataframe(my_data_rows)
 
 #Allow the end user to add fruit.
 my_fruit_list2 = my_data_rows
+streamlit.text(type(my_fruit_list2))
 streamlit.text(list(my_fruit_list2))
 
 #add_my_fruit = streamlit.multiselect("what fruit would you like to add? ", list(my_fruit_list2.0), ['banana'])

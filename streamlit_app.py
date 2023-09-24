@@ -1,5 +1,9 @@
 import streamlit
+import pandas as pd
+import requests
 import snowflake.connector
+from urllib.error import URLError
+
 streamlit.title("My parents new healthy diner")
 streamlit.header("Breakfast menu")
 streamlit.text("🥣 🥗  🥑🍞")
@@ -7,7 +11,6 @@ streamlit.text( "🥣Omega 3 & Blueberry oatmeal")
 streamlit.text('🥗Kale, Spinach & Rocket Smoothie')
 streamlit.text('🥑🍞 All Veggie pickles and multigrain sandwitch')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
-import pandas as pd
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 streamlit.text(type(my_fruit_list))
@@ -19,7 +22,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 # Display the table on the page.
 
-import requests
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
 streamlit.header("Fruityvice Fruit Advice!")
